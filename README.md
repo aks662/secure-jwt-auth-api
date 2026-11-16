@@ -13,17 +13,17 @@
 
 An enterprise-grade, secure User Authentication and Management backend built using **Node.js**, **Express.js**, **Prisma ORM**, **PostgreSQL**, **Bcrypt**, and **JSON Web Tokens (JWT)**.
 
-This project demonstrates a robust, secure authentication pipeline featuring password hashing, Bearer token verification middleware, unique JWT identifier (`jti`) generation via Node's native `crypto` module, and protected route architecture[cite: 1].
+This project demonstrates a robust, secure authentication pipeline featuring password hashing, Bearer token verification middleware, unique JWT identifier (`jti`) generation via Node's native `crypto` module, and protected route architecture.
 
 ---
 
 ## 🚀 Features
 
-* **`POST` /signup** — Secure user registration with email normalization, duplicate checking, and bcrypt password hashing (10 salt rounds)[cite: 1].
-* **`POST` /login** — Authenticates credentials, validates hashed passwords, and issues a cryptographically tracked JWT containing a unique `jti`[cite: 1].
-* **`GET` /me** — Protected endpoint using custom middleware to retrieve authenticated user account metadata[cite: 1].
-* **`GET` /dashboard** — Protected user dashboard endpoint rendering personalized greeting cards with fallback handling[cite: 1].
-* **🛡️ JWT Middleware (`requireAuth`)** — Intercepts and parses Bearer tokens from request headers, verifying signatures against environment secrets[cite: 1].
+* **`POST` /signup** — Secure user registration with email normalization, duplicate checking, and bcrypt password hashing (10 salt rounds).
+* **`POST` /login** — Authenticates credentials, validates hashed passwords, and issues a cryptographically tracked JWT containing a unique `jti`.
+* **`GET` /me** — Protected endpoint using custom middleware to retrieve authenticated user account metadata.
+* **`GET` /dashboard** — Protected user dashboard endpoint rendering personalized greeting cards with fallback handling.
+* **🛡️ JWT Middleware (`requireAuth`)** — Intercepts and parses Bearer tokens from request headers, verifying signatures against environment secrets.
 * **⚡ Modern Tooling** — Powered by Prisma ORM for type-safe PostgreSQL database management and automated hot-reloading via `nodemon`.
 
 ---
@@ -32,13 +32,13 @@ This project demonstrates a robust, secure authentication pipeline featuring pas
 
 | Technology | Purpose |
 | :--- | :--- |
-| **Node.js**[cite: 1] | JavaScript runtime environment |
-| **Express.js**[cite: 1] | Fast, unopinionated web framework for routing & middleware |
-| **Prisma ORM**[cite: 1] | Next-generation Object-Relational Mapper for PostgreSQL |
-| **PostgreSQL**[cite: 1] | Scalable relational database storage |
-| **JSON Web Tokens (JWT)**[cite: 1] | Stateless session management & verification |
-| **Bcrypt**[cite: 1] | Secure cryptographic password hashing |
-| **Crypto (Node.js)**[cite: 1] | Native cryptographic library for generating unique token IDs (`jti`) |
+| **Node.js** | JavaScript runtime environment |
+| **Express.js** | Fast, unopinionated web framework for routing & middleware |
+| **Prisma ORM** | Next-generation Object-Relational Mapper for PostgreSQL |
+| **PostgreSQL** | Scalable relational database storage |
+| **JSON Web Tokens (JWT)** | Stateless session management & verification |
+| **Bcrypt** | Secure cryptographic password hashing |
+| **Crypto (Node.js)** | Native cryptographic library for generating unique token IDs (`jti`) |
 
 ---
 
@@ -56,3 +56,62 @@ This project demonstrates a robust, secure authentication pipeline featuring pas
 ├── .env.example          # Environment variables template
 ├── package.json          # Project metadata & dependencies
 └── package-lock.json     # Dependency lockfile
+```
+
+---
+
+## ⚙️ Getting Started
+
+Follow these steps to set up and run the project locally on your machine.
+
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/aks662/jwt-auth-node-prisma-postgresql.git
+cd 1_jwt_authentication
+```
+
+### **2. Install Dependencies**
+```bash
+npm install
+```
+
+### **3. Configure Environment Variables**
+Create a `.env` file in the root directory and add your configuration (referencing `.env.example`):
+```env
+PORT=3000
+DATABASE_URL="postgresql://your_username:your_password@localhost:5432/your_db_name?schema=public"
+JWT_SECRET="your_super_secret_jwt_key_here"
+```
+
+### **4. Run Database Migrations**
+Initialize and apply your Prisma schema migrations to PostgreSQL:
+```bash
+npx prisma migrate dev --name init
+```
+
+### **5. Run the Server**
+Start the development server with hot-reloading via `nodemon`:
+```bash
+npm run dev
+```
+
+Your server will be running live at **`http://localhost:3000`**!
+
+---
+
+## 🔌 API Endpoints Reference
+
+| Route | Method | Access | Description |
+| :--- | :--- | :--- | :--- |
+| `/signup` | `POST` | Public | Register a new user account |
+| `/login` | `POST` | Public | Authenticate user and receive a JWT Bearer token |
+| `/me` | `GET` | Protected | Fetch profile details of the authenticated user |
+| `/dashboard` | `GET` | Protected | Access personalized user dashboard greetings |
+
+---
+
+## 👤 Author
+
+**Akshit Rana**  
+* B.Tech Computer Science & Engineering (AI/ML)  
+* Newton School of Technology, Ajeenkya DY Patil University, Pune
